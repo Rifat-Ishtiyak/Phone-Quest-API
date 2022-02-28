@@ -1,4 +1,5 @@
 const loadPhone = () =>{
+    document.getElementById('spinner').style.display = 'block';
     const searchField = document.getElementById('search-input');
     const mobileName = (searchField.value).toLowerCase();
 
@@ -26,4 +27,5 @@ const showMobile = (mobileData) =>{
                         </div>`;
         phoneField.appendChild(div);
     });
+    document.getElementById('spinner').style.display = 'none';
 }
