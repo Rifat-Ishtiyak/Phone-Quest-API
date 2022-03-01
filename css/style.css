@@ -46,7 +46,8 @@ body{
     left: 50%;
 }
 
-.mobile-details{
+#mobile-details{
+    display: none;
     width: 80%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding: 40px 20px;
