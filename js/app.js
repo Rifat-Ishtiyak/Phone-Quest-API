@@ -1,10 +1,14 @@
+//!-------------- load all phone from API --------------
 const loadPhone = () =>{
     const searchField = document.getElementById('search-input');
     const mobileName = (searchField.value).toLowerCase();
 
     if (mobileName == "") {
         document.getElementById('search-error').innerText = 'input box is empty';
-    } 
+    }
+    else if(isNaN(mobileName)==false){
+        document.getElementById('search-error').innerText = 'type only string';
+    }
     else {
         document.getElementById('search-error').innerText = '';
         document.getElementById('spinner').style.display = 'block';
@@ -17,10 +21,13 @@ const loadPhone = () =>{
     }
 }
 
+//!-------------- Show all phone from API --------------
 const showMobile = (mobileData) =>{
     const phoneField = document.getElementById('all-phone');
+
     phoneField.innerText = '';
-    console.log(mobileData);
+    detailsRemove();
+    
     if(mobileData.length === 0){
         const div =  document.createElement('div');
         div.classList.add('col-12');
@@ -50,6 +57,8 @@ const showMobile = (mobileData) =>{
     }  
 }
 
+
+//!-------------- search in API --------------
 const phoneDetails = (searchID) =>{
     const url = `https://openapi.programming-hero.com/api/phone/${searchID}`;
     
@@ -59,42 +68,53 @@ const phoneDetails = (searchID) =>{
 
 }
 
+
+//!-------------- show phone details from API --------------
 const showMobileDetails =(mobileDetails)=>{
+    document.documentElement.scrollTop = 150;
+
     document.getElementById('mobile-details').style.display = 'block';
-    console.log(mobileDetails);
     const detailsField = document.getElementById('mobile-details');
+    detailsField.innerText = '';
+
     const div = document.createElement('div');
     div.classList.add('row', 'gy-4', 'gx-0', 'd-flex', 'align-items-center');
     div.innerHTML= `<div class="col-lg-6 d-flex justify-content-center">
-                        <img src="https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg" class="w-50 img-fluid" alt="">
+                        <img src="${mobileDetails.image}" class="w-50 img-fluid" alt="">
                     </div>
                     <div class="col-lg-6 d-flex justify-content-center">
                         <div>
-                            <h5 class=""><span class="fw-bold">Name :</span> iPhone 13 Pro Max</h5>
-                            <h6 class=""><span class="fw-bold">Realease Date :</span> Released 2021, September 24</h6>
+                            <h5 class=""><span class="fw-bold">Name :</span> ${mobileDetails.name}</h5>
+                            <h6 class=""><span class="fw-bold">Release Date :</span> <span class="text-secondary">${mobileDetails.releaseDate==="" ? "Release date is not available" : mobileDetails.releaseDate}</span></h6>
                             <h6>
                                 <span class="fw-bold">Main Features : </span>
                                 <ul class="mt-1">
-                                    <li>storage : 128GB/256GB/1TB storage, no card slot</li>
-                                    <li>displaySize: 6.7 inches, 109.8 cm2 (~87.4% screen-to-body ratio)</li>
-                                    <li>chipSet : Apple A15 Bionic (5 nm)</li>
-                                    <li>memory : 128GB 6GB RAM, 256GB 6GB RAM, 512GB 6GB RAM, 1TB 6GB RAM</li>
-                                    <li>sensors : Face ID, accelerometer, gyro, proximity, compass, barometer</li>
+                                    <li>storage : ${mobileDetails.mainFeatures.storage}</li>
+                                    <li>displaySize: ${mobileDetails.mainFeatures.displaySize}</li>
+                                    <li>chipSet :  ${mobileDetails.mainFeatures.chipSet}</li>
+                                    <li>memory : ${mobileDetails.mainFeatures.memory}</li>
+                                    <li>sensors : ${mobileDetails.mainFeatures.sensors.map( sensor => ' '+sensor)}</li>
                                 </ul>
                             </h6>
                             <h6>
                                 <span class="fw-bold">Others : </span>
                                 <ul class="mt-1">
-                                    <li>WLAN : Wi-Fi 802.11 a/b/g/n/ac/6, dual-band, hotspot</li>
-                                    <li>Bluetooth: 5.0, A2DP, LE</li>
-                                    <li>GPS : Yes, with A-GPS, GLONASS, GALILEO, BDS, QZSS</li>
-                                    <li>NFC : Yes</li>
-                                    <li>Radio : No</li>
-                                    <li>USB : Lightning, USB 2.0</li>
+                                    <li>WLAN : ${mobileDetails.others?.WLAN ?? " "}</li>
+                                    <li>Bluetooth:  ${mobileDetails.others?.Bluetooth ?? " "}</li>
+                                    <li>GPS : ${mobileDetails.others?.GPS ?? " "}</li>
+                                    <li>NFC : ${mobileDetails.others?.NFC ?? " "}</li>
+                                    <li>Radio : ${mobileDetails.others?.Radio ?? " "}</li>
+                                    <li>USB : ${mobileDetails.others?.USB ?? " "}</li>
                                 </ul>
                             </h6>
                         </div>
                     </div>`;
+    detailsField.innerHTML = `<button class="btn position-absolute top-0 end-0" onclick="detailsRemove()"><img src="./img/remove.png" width="20" alt=""></button>`
     detailsField.appendChild(div);          
+}
 
+
+//!-------------- phone details remove button --------------
+const detailsRemove = () =>{
+    document.getElementById('mobile-details').style.display = 'none';
 }
