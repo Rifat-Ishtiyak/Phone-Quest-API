@@ -9,25 +9,68 @@
     <title>Phone Dekho</title>
 </head>
 <body>
+    <!--! header start -->
     <header class="container my-4">
         <div class="text-center">
-            <h1 class="fw-bold">PHONE DEKHO</h1>
+            <img src="./img/logo.png" width="80" alt="">
+            <h1 class="fw-bold my-3">PHONE DEKHO</h1>
         </div>
 
-        <div class="my-5 d-flex align-items-center justify-content-center">
+        <div class="mt-5 d-flex align-items-center justify-content-center">
             <input class="me-2" id="search-input" type="text" name="">
             <button class="search-btn btn" onclick="loadPhone()">search</button>
         </div>
+        <div class="text-center mb-5 text-danger mt-1">
+            <span id="search-error"></span>
+        </div>
     </header>
+    <!--! header end -->
 
+    <!--! phone details section start -->
+    <div class="container mobile-details">
+        <div class="row gy-4 gx-0 d-flex align-items-center">
+            <div class="col-lg-6 d-flex justify-content-center">
+                <img src="https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg" width="180" alt="">
+            </div>
+            <div class="col-lg-6 d-flex justify-content-center">
+                <div>
+                    <h5 class="">Name : iPhone 13 Pro Max</h5>
+                    <h6 class="">Brand : Apple</h6>
+                    <h6 class="">Display : 6.7 inches, 109.8 cm2 (~87.4% screen-to-body ratio)</h6>
+                    <h6 class="">Chipset : Apple A15 Bionic (5 nm)</h6>
+                    <h6 class="">Sensors : Face ID, accelerometer, gyro, proximity, compass, barometer</h6>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <!-- <div class="w-100 d-flex align-items-center justify-content-center">
+            <div class="mx-1 p-3">
+                <img src="https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg" width="180" alt="">
+            </div>
+            <div class="mx-1 p-3">
+                <h5>Name : iPhone 13 Pro Max</h5>
+                <h6>Brand : Apple</h6>
+                <h6>Display : 6.7 inches, 109.8 cm2 (~87.4% screen-to-body ratio)</h6>
+                <h6>Chipset : Apple A15 Bionic (5 nm)</h6>
+                <h6>Sensors : Face ID, accelerometer, gyro, proximity, compass, barometer</h6>
+            </div>
+        </div> -->
+    </div>
+
+    <!--! phone details section start -->
+
+    <!--! loading spinner code start -->
     <div id="spinner" class="conatainer text-center position-absolute translate-middle">
         <div class="spinner-border mx-auto" style="width: 5rem; height: 5rem;" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
     </div>
+    <!--! loading spinner code end -->
 
-    <main class="container">
-        <div id="all-phone" class="row gy-4 gx-5">
+    <main class="container my-5">
+        <div id="all-phone" class="row gy-4 gx-lg-5">
         
         </div>
     </main>
