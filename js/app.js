@@ -57,11 +57,11 @@ const showMobile = (mobileData) =>{
     }  
 }
 
-
 //!-------------- search in API --------------
 const phoneDetails = (searchID) =>{
     const url = `https://openapi.programming-hero.com/api/phone/${searchID}`;
-    
+    document.getElementById('spinner').style.display = 'block';
+
     fetch(url)
         .then(resonse => resonse.json())
         .then(mobileDetails => showMobileDetails(mobileDetails.data))
@@ -99,18 +99,19 @@ const showMobileDetails =(mobileDetails)=>{
                             <h6>
                                 <span class="fw-bold">Others : </span>
                                 <ul class="mt-1">
-                                    <li class="my-1"><span class="fw-bold">WLAN :</span> ${mobileDetails.others?.WLAN ?? " "}.</li>
-                                    <li class="my-1"><span class="fw-bold">Bluetooth :</span> ${mobileDetails.others?.Bluetooth ?? " "}.</li>
-                                    <li class="my-1"><span class="fw-bold">GPS :</span> ${mobileDetails.others?.GPS ?? " "}.</li>
-                                    <li class="my-1"><span class="fw-bold">NFC :</span> ${mobileDetails.others?.NFC ?? " "}.</li>
-                                    <li class="my-1"><span class="fw-bold">Radio :</span> ${mobileDetails.others?.Radio ?? " "}.</li>
-                                    <li class="my-1"><span class="fw-bold">USB :</span> ${mobileDetails.others?.USB ?? " "}.</li>
+                                    <li class="my-1"><span class="fw-bold">WLAN :</span> ${mobileDetails.others?.WLAN ?? "data not found"}.</li>
+                                    <li class="my-1"><span class="fw-bold">Bluetooth :</span> ${mobileDetails.others?.Bluetooth ?? "data not found"}.</li>
+                                    <li class="my-1"><span class="fw-bold">GPS :</span> ${mobileDetails.others?.GPS ?? "data not found"}.</li>
+                                    <li class="my-1"><span class="fw-bold">NFC :</span> ${mobileDetails.others?.NFC ?? "data not found"}.</li>
+                                    <li class="my-1"><span class="fw-bold">Radio :</span> ${mobileDetails.others?.Radio ?? "data not found"}.</li>
+                                    <li class="my-1"><span class="fw-bold">USB :</span> ${mobileDetails.others?.USB ?? "data not found"}</li>
                                 </ul>
                             </h6>
                         </div>
                     </div>`;
     detailsField.innerHTML = `<button class="btn position-absolute top-0 end-0" onclick="detailsRemove()"><img src="./img/remove.png" width="20" alt=""></button>`
-    detailsField.appendChild(div);          
+    detailsField.appendChild(div);
+    document.getElementById('spinner').style.display = 'none';          
 }
 
 
