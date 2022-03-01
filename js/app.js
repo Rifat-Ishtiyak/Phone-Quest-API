@@ -46,7 +46,7 @@ const showMobile = (mobileData) =>{
             div.innerHTML = `<div class="phone-card">
                                 <div class="text-center">
                                     <img src="${element.image}" width="120" alt="">
-                                    <h6 class="mt-4">Phone Name : ${element.phone_name}</h6>
+                                    <h6 class="mt-4">${element.phone_name}</h6>
                                     <h6 class="">Brand : ${element.brand}</h6>
                                     <button class="btn btn-success mt-3 w-50" onclick="phoneDetails('${element.slug}')">Details</button>
                                 </div>
@@ -84,27 +84,27 @@ const showMobileDetails =(mobileDetails)=>{
                     </div>
                     <div class="col-lg-6 d-flex justify-content-center">
                         <div>
-                            <h5 class=""><span class="fw-bold">Name :</span> ${mobileDetails.name}</h5>
-                            <h6 class=""><span class="fw-bold">Release Date :</span> <span class="text-secondary">${mobileDetails.releaseDate==="" ? "Release date is not available" : mobileDetails.releaseDate}</span></h6>
+                            <h4 class=""><span class="fw-bold">${mobileDetails.name}</span></h4>
+                            <h6 class=""><span class="fw-bold">Release Date :</span> <span class="text-secondary">${mobileDetails.releaseDate==="" ? "Release date is not available" : mobileDetails.releaseDate}.</span></h6>
                             <h6>
                                 <span class="fw-bold">Main Features : </span>
                                 <ul class="mt-1">
-                                    <li>storage : ${mobileDetails.mainFeatures.storage}</li>
-                                    <li>displaySize: ${mobileDetails.mainFeatures.displaySize}</li>
-                                    <li>chipSet :  ${mobileDetails.mainFeatures.chipSet}</li>
-                                    <li>memory : ${mobileDetails.mainFeatures.memory}</li>
-                                    <li>sensors : ${mobileDetails.mainFeatures.sensors.map( sensor => ' '+sensor)}</li>
+                                    <li class="my-1"><span class="fw-bold">Storage :</span> ${mobileDetails.mainFeatures.storage}.</li>
+                                    <li class="my-1"><span class="fw-bold">Display Size :</span> ${mobileDetails.mainFeatures.displaySize}.</li>
+                                    <li class="my-1"><span class="fw-bold">Chipset :</span> ${mobileDetails.mainFeatures.chipSet}.</li>
+                                    <li class="my-1"><span class="fw-bold">Memory :</span> ${mobileDetails.mainFeatures.memory}.</li>
+                                    <li class="my-1"><span class="fw-bold">Sensors :</span> ${mobileDetails.mainFeatures.sensors.map( sensor => ' '+sensor)}.</li>
                                 </ul>
                             </h6>
                             <h6>
                                 <span class="fw-bold">Others : </span>
                                 <ul class="mt-1">
-                                    <li>WLAN : ${mobileDetails.others?.WLAN ?? " "}</li>
-                                    <li>Bluetooth:  ${mobileDetails.others?.Bluetooth ?? " "}</li>
-                                    <li>GPS : ${mobileDetails.others?.GPS ?? " "}</li>
-                                    <li>NFC : ${mobileDetails.others?.NFC ?? " "}</li>
-                                    <li>Radio : ${mobileDetails.others?.Radio ?? " "}</li>
-                                    <li>USB : ${mobileDetails.others?.USB ?? " "}</li>
+                                    <li class="my-1"><span class="fw-bold">WLAN :</span> ${mobileDetails.others?.WLAN ?? " "}.</li>
+                                    <li class="my-1"><span class="fw-bold">Bluetooth :</span> ${mobileDetails.others?.Bluetooth ?? " "}.</li>
+                                    <li class="my-1"><span class="fw-bold">GPS :</span> ${mobileDetails.others?.GPS ?? " "}.</li>
+                                    <li class="my-1"><span class="fw-bold">NFC :</span> ${mobileDetails.others?.NFC ?? " "}.</li>
+                                    <li class="my-1"><span class="fw-bold">Radio :</span> ${mobileDetails.others?.Radio ?? " "}.</li>
+                                    <li class="my-1"><span class="fw-bold">USB :</span> ${mobileDetails.others?.USB ?? " "}.</li>
                                 </ul>
                             </h6>
                         </div>
