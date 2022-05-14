@@ -1,6 +1,6 @@
 # Phone-Quest-API
 
-### Live site 👉 https://rifat-ishtiyak.github.io/Phone-Quest-API
+### Live site 👉 https://ishtiyak98.github.io/Phone-Quest-API
 
 <br>
 
